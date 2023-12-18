@@ -3,4 +3,4 @@
 from sanic.config import Config
 
 class MyConfig(Config):
-    pass
+    CORS_ALLOW_HEADERS = '*'

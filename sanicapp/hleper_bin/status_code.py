@@ -12,9 +12,14 @@ class SetStatusCode():
             "type_error":{"code":20003,"msg":"内部运行错误"}
         }
     
-    def success(self,data: dict,request: tuple, status: int) -> json:
+    def success(self, data: dict, request: tuple, status: int) -> json:
         res = self.status_code["success"]
         if data:
             res["data"] = data
         res["request_id"] = str(request.id)
         return json(res,status=status)
+    
+    def message(self, error_key: str, request: tuple, status: int)-> json:
+        res = self.status_code.get(error_key)
+        return json(res,status=status)
+        
